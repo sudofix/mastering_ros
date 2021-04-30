@@ -1,30 +1,27 @@
 <?xml version="1.0"?>
 
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" 
- 	xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
-    	xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-    	xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
-	name="pan_tilt">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
+  xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+  xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+  xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" name="pan_tilt">
 
 
-	<xacro:property name="base_link_length" value="0.01" />
-	<xacro:property name="base_link_radius" value="0.2" />
+  <xacro:property name="base_link_length" value="0.01" />
+  <xacro:property name="base_link_radius" value="0.2" />
 
-	<xacro:property name="pan_link_length" value="0.4" />
-	<xacro:property name="pan_link_radius" value="0.04" />
+  <xacro:property name="pan_link_length" value="0.4" />
+  <xacro:property name="pan_link_radius" value="0.04" />
 
-	<xacro:property name="tilt_link_length" value="0.4" />
-	<xacro:property name="tilt_link_radius" value="0.04" />
+  <xacro:property name="tilt_link_length" value="0.4" />
+  <xacro:property name="tilt_link_radius" value="0.04" />
 
 
-	<xacro:macro name="inertial_matrix" params="mass">
-               <inertial>
-                       <mass value="${mass}" />
-                       <inertia ixx="0.5" ixy="0.0" ixz="0.0"
-                                iyy="0.5" iyz="0.0"
-                                izz="0.5" />
-               </inertial>
-	</xacro:macro>
+  <xacro:macro name="inertial_matrix" params="mass">
+    <inertial>
+      <mass value="${mass}" />
+      <inertia ixx="0.5" ixy="0.0" ixz="0.0" iyy="0.5" iyz="0.0" izz="0.5" />
+    </inertial>
+  </xacro:macro>
 
 
 
@@ -32,7 +29,7 @@
 
     <visual>
       <geometry>
-	<cylinder length="${base_link_length}" radius="${base_link_radius}"/>
+        <cylinder length="${base_link_length}" radius="${base_link_radius}"/>
       </geometry>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <material name="yellow">
@@ -42,11 +39,11 @@
 
     <collision>
       <geometry>
-	<cylinder length="${base_link_length+0.02}" radius="0.2"/>
+        <cylinder length="${base_link_length+0.02}" radius="0.2"/>
       </geometry>
       <origin rpy="0 0 0" xyz="0 0 0"/>
     </collision>
-	<xacro:inertial_matrix mass="1"/>
+    <xacro:inertial_matrix mass="1"/>
   </link>
 
   <joint name="pan_joint" type="revolute">
@@ -61,7 +58,7 @@
   <link name="pan_link">
     <visual>
       <geometry>
-	<cylinder length="${pan_link_length}" radius="${pan_link_radius}"/>
+        <cylinder length="${pan_link_length}" radius="${pan_link_radius}"/>
       </geometry>
       <origin rpy="0 0 0" xyz="0 0 0.09"/>
       <material name="red">
@@ -70,11 +67,11 @@
     </visual>
     <collision>
       <geometry>
-	<cylinder length="${pan_link_length}" radius="${pan_link_radius+0.02}"/>
+        <cylinder length="${pan_link_length}" radius="${pan_link_radius+0.02}"/>
       </geometry>
       <origin rpy="0 0 0" xyz="0 0 0.09"/>
     </collision>
-	<xacro:inertial_matrix mass="1"/>
+    <xacro:inertial_matrix mass="1"/>
   </link>
 
   <joint name="tilt_joint" type="revolute">
@@ -89,7 +86,7 @@
   <link name="tilt_link">
     <visual>
       <geometry>
-	<cylinder length="${tilt_link_length}" radius="${tilt_link_radius}"/>
+        <cylinder length="${tilt_link_length}" radius="${tilt_link_radius}"/>
       </geometry>
       <origin rpy="0 1.5 0" xyz="0 0 0"/>
       <material name="green">
@@ -98,11 +95,11 @@
     </visual>
     <collision>
       <geometry>
-	<cylinder length="${tilt_link_length}" radius="${tilt_link_radius+0.2}"/>
+        <cylinder length="${tilt_link_length}" radius="${tilt_link_radius+0.2}"/>
       </geometry>
       <origin rpy="0 1.5 0" xyz="0 0 0"/>
     </collision>
-	<xacro:inertial_matrix mass="1"/>
+    <xacro:inertial_matrix mass="1"/>
   </link>
 
 
